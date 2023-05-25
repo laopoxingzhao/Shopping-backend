@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" >
+    <script src="../js/jquery.js" ></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <title>轻院食堂管理系统</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">轻院食堂管理系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">商品管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/alluser">用户管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/order">营业订单</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/showadd">商品入库</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">商品id号</th>
+            <th scope="col">商品名</th>
+            <th scope="col">商品价格</th>
+            <th scope="col">商品单位</th>
+            <th scope="col">商品数量</th>
+            <th scope="col">操作</th>
+<!--            <th>-->
+<!--                <a type="button" class="btn btn-secondary">Secondary</a>-->
+<!--            </th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="good:${goods}">
+            <td th:text="${good.goodsid}"></td>
+            <td th:text="${good.goodsname}"></td>
+            <td th:text="${good.goodsprice}"></td>
+            <td th:text="${good.goodsunit}"></td>
+            <td th:text="${good.count}"></td>
+            <th>
+                <a th:href="'/update?id='+${good.goodsid}"  type="button" class="btn btn-secondary">修改信息</a>
+            </th>
+<!--            <td class="align-middle">-->
+<!--                <a class="btn btn-danger" th:href="'/deletgood?goodid='+${good.goodsid}">删除</button>-->
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
